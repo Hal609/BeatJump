@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://ccftscsg0qm4x"]
+
+[ext_resource type="Script" path="res://platform.gd" id="1_dh27n"]
+[ext_resource type="Texture2D" uid="uid://qakobery7whm" path="res://Sprites/PlatformSpace.png" id="2_3rq5r"]
+[ext_resource type="Texture2D" uid="uid://b8f0jdfh4i745" path="res://Sprites/PlatformFull.png" id="3_gwvnh"]
+[ext_resource type="Texture2D" uid="uid://4rr2gwyh623k" path="res://Sprites/PlatformDot.png" id="4_b1s7r"]
+[ext_resource type="Texture2D" uid="uid://q6oyd0x41ftu" path="res://Sprites/PlatformRing.png" id="5_b0lsn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5pgl"]
+size = Vector2(82.5, 234)
+
+[node name="Platform" type="AnimatableBody2D"]
+script = ExtResource("1_dh27n")
+
+[node name="PlatformSpace" type="Sprite2D" parent="."]
+texture = ExtResource("2_3rq5r")
+
+[node name="PlatformFull" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -1)
+texture = ExtResource("3_gwvnh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-2.38419e-07, -0.249998)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_v5pgl")
+
+[node name="PlatformDot" type="Sprite2D" parent="."]
+position = Vector2(0, -129)
+texture = ExtResource("4_b1s7r")
+
+[node name="PlatformRing" type="Sprite2D" parent="."]
+position = Vector2(2.08165e-12, -129)
+texture = ExtResource("5_b0lsn")

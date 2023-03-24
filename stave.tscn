@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://fhpgxkligsou"]
+
+[ext_resource type="Texture2D" uid="uid://cgytait3rjy3o" path="res://Sprites/Stave.png" id="1_tku7a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ch7vj"]
+size = Vector2(20, 388)
+
+[node name="Stave" type="Node2D"]
+metadata/_edit_group_ = true
+
+[node name="Stave" type="Sprite2D" parent="."]
+texture = ExtResource("1_tku7a")
+centered = false
+
+[node name="NoteDestination" type="StaticBody2D" parent="."]
+position = Vector2(578, 888)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NoteDestination"]
+position = Vector2(-8, 3)
+shape = SubResource("RectangleShape2D_ch7vj")

@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://cci7713aq0www"]
+
+[ext_resource type="PackedScene" uid="uid://vxd6i1wnho4f" path="res://wave.tscn" id="1_hrd03"]
+[ext_resource type="PackedScene" uid="uid://ccftscsg0qm4x" path="res://platform.tscn" id="3_bpbt8"]
+[ext_resource type="PackedScene" uid="uid://bsc5iwp3o7kcy" path="res://player.tscn" id="4_lwkb1"]
+[ext_resource type="PackedScene" uid="uid://chdd3p2eodtst" path="res://spike.tscn" id="4_mcdlb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u2r3x"]
+size = Vector2(3881, 385)
+
+[node name="GameWorld" type="Node2D"]
+
+[node name="Wave" parent="." instance=ExtResource("1_hrd03")]
+move_rate = 900.0
+
+[node name="Platform" parent="." instance=ExtResource("3_bpbt8")]
+position = Vector2(1268, 512)
+
+[node name="Player" parent="." instance=ExtResource("4_lwkb1")]
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(1927.5, 891.5)
+shape = SubResource("RectangleShape2D_u2r3x")
+
+[node name="Spike" parent="." instance=ExtResource("4_mcdlb")]
+position = Vector2(1031, 746)
+rotation = -3.14159
+
+[node name="Spike2" parent="." instance=ExtResource("4_mcdlb")]
+position = Vector2(953, 745)
+rotation = -3.14159
+
+[node name="Spike3" parent="." instance=ExtResource("4_mcdlb")]
+position = Vector2(872, 744)
+rotation = -3.14159
+
+[node name="Spike4" parent="." instance=ExtResource("4_mcdlb")]
+position = Vector2(795, 744)
+rotation = -3.14159
+
+[node name="Spike5" parent="." instance=ExtResource("4_mcdlb")]
+position = Vector2(721, 744)
+rotation = -3.14159

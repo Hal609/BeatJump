@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://cowow7xa1wcea"]
+
+[ext_resource type="Script" path="res://Note.gd" id="1_t6pda"]
+[ext_resource type="Texture2D" uid="uid://cbyvquytfktng" path="res://Sprites/NoteCircle.png" id="2_e2fpn"]
+[ext_resource type="Texture2D" uid="uid://il32pnwxdykp" path="res://Sprites/NotePentagon.png" id="3_8s5fx"]
+[ext_resource type="Texture2D" uid="uid://mkh8xdf4in2s" path="res://Sprites/NoteSquare.png" id="4_gjahj"]
+[ext_resource type="Texture2D" uid="uid://5tgy6ojgh2yc" path="res://Sprites/NoteTriangle.png" id="5_r21tx"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_xks2g"]
+b = Vector2(0, 53)
+
+[node name="Note" type="Node2D" node_paths=PackedStringArray("circle_sprite", "pentagon_sprite", "square_sprite", "triangle_sprite")]
+script = ExtResource("1_t6pda")
+circle_sprite = NodePath("NoteCircle")
+pentagon_sprite = NodePath("NotePentagon")
+square_sprite = NodePath("NoteSquare")
+triangle_sprite = NodePath("NoteTriangle")
+
+[node name="NoteCircle" type="Sprite2D" parent="."]
+texture = ExtResource("2_e2fpn")
+
+[node name="NotePentagon" type="Sprite2D" parent="."]
+texture = ExtResource("3_8s5fx")
+
+[node name="NoteSquare" type="Sprite2D" parent="."]
+position = Vector2(0, -24)
+texture = ExtResource("4_gjahj")
+
+[node name="NoteTriangle" type="Sprite2D" parent="."]
+texture = ExtResource("5_r21tx")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -26)
+shape = SubResource("SegmentShape2D_xks2g")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

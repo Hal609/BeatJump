@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://chdd3p2eodtst"]
+
+[ext_resource type="Script" path="res://Spike.gd" id="1_15a6m"]
+[ext_resource type="Texture2D" uid="uid://5tgy6ojgh2yc" path="res://Sprites/NoteTriangle.png" id="2_ed12j"]
+
+[node name="Spike" type="AnimatableBody2D"]
+position = Vector2(0, -42)
+script = ExtResource("1_15a6m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, -8.23258e-08)
+rotation = 1.0472
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_ed12j")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-45, -21, 44, -20, 0, 53)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://bhlfdru5sjpvs"]
+
+[ext_resource type="Script" path="res://note_spawner.gd" id="3_dxaqq"]
+[ext_resource type="PackedScene" uid="uid://cci7713aq0www" path="res://game_world.tscn" id="4_bdrc5"]
+[ext_resource type="Script" path="res://Audio.gd" id="4_wo5q8"]
+[ext_resource type="AudioStream" uid="uid://b2hek4nmcsj1b" path="res://Sounds/snare.wav" id="5_0ysfy"]
+[ext_resource type="AudioStream" uid="uid://bwa2m70qyseil" path="res://Sounds/kick.wav" id="6_15i1n"]
+[ext_resource type="PackedScene" uid="uid://fhpgxkligsou" path="res://stave.tscn" id="7_olwjn"]
+[ext_resource type="AudioStream" uid="uid://du7r6afv2pgus" path="res://Sounds/hihat.wav" id="7_pwcmj"]
+
+[node name="World" type="Node2D"]
+
+[node name="Stave" parent="." instance=ExtResource("7_olwjn")]
+
+[node name="Notes" type="Node2D" parent="." node_paths=PackedStringArray("kick_pos", "snare_pos", "hihat_pos", "low_note_pos", "high_note_pos")]
+script = ExtResource("3_dxaqq")
+kick_pos = NodePath("KickPos")
+snare_pos = NodePath("SnarePos")
+hihat_pos = NodePath("HiHatPos")
+low_note_pos = NodePath("LowNotePos")
+high_note_pos = NodePath("HighNotePos")
+
+[node name="KickPos" type="Marker2D" parent="Notes"]
+position = Vector2(1937, 1032)
+
+[node name="SnarePos" type="Marker2D" parent="Notes"]
+position = Vector2(1937, 970)
+
+[node name="HiHatPos" type="Marker2D" parent="Notes"]
+position = Vector2(1937, 908)
+
+[node name="LowNotePos" type="Marker2D" parent="Notes"]
+position = Vector2(1937, 846)
+
+[node name="HighNotePos" type="Marker2D" parent="Notes"]
+position = Vector2(1937, 784)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1920, 700)
+render_target_update_mode = 4
+
+[node name="GameWorld" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_bdrc5")]
+
+[node name="Audio" type="Node" parent="." node_paths=PackedStringArray("snare", "kick", "hihat")]
+script = ExtResource("4_wo5q8")
+snare = NodePath("Snare")
+kick = NodePath("Kick")
+hihat = NodePath("HiHat")
+
+[node name="Snare" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("5_0ysfy")
+
+[node name="Kick" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("6_15i1n")
+
+[node name="HiHat" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("7_pwcmj")
